@@ -1,331 +1,269 @@
 import { useState } from 'react';
-import { Heart, ThumbsUp, ThumbsDown, Plus, Trash2 } from 'lucide-react';
-import { AppData, TriedFood, FoodPreference } from '../types';
-import { format } from 'date-fns';
-import { de } from 'date-fns/locale';
+import { Plus, Trash2, AlertCircle } from 'lucide-react';
+import { useAppContext } from '../hooks/useAppContext';
+import { getPickyEaterStats } from '../utils/data';
+import { formatRelativeTime, getReactionEmoji, formatReaction } from '../utils/formatting';
 
-interface Props {
-  data: AppData;
-  setData: (data: AppData) => void;
-}
+type TabType = 'stats' | 'profile' | 'likes' | 'dislikes' | 'tried';
 
-const PickyEaterTracker = ({ data, setData }: Props) => {
-  const [activeTab, setActiveTab] = useState<'likes' | 'dislikes' | 'tried'>('tried');
-  const { pickyEater } = data;
+/**
+ * Picky eater tracker component
+ */
+const PickyEaterTracker = () => {
+  const { data, addPickyEaterFood, removePickyEaterFood, updatePickyEaterProfile } = useAppContext();
+  const [activeTab, setActiveTab] = useState<TabType>('stats');
+  const [error, setError] = useState<string | null>(null);
 
-  const addTriedFood = () => {
-    const foodName = prompt('Name des Lebensmittels:');
-    if (!foodName) return;
+  const pickyEater = data.pickyEater;
+  const stats = getPickyEaterStats(data);
 
-    const reactions: Array<TriedFood['reaction']> = ['loved', 'liked', 'neutral', 'disliked', 'refused'];
-    
-    const reactionChoice = prompt(
-      `Reaktion auf "${foodName}":\n1: Geliebt\n2: Gemocht\n3: Neutral\n4: Nicht gemocht\n5: Verweigert\n\nWählen Sie 1-5:`
-    );
-    
-    if (!reactionChoice || !['1', '2', '3', '4', '5'].includes(reactionChoice)) return;
-    
-    const reaction = reactions[parseInt(reactionChoice) - 1];
-    const notes = prompt('Notizen (optional):') || '';
-    const willTryAgain = reaction !== 'refused' && confirm('Nochmal probieren?');
-
-    const newFood: TriedFood = {
-      id: crypto.randomUUID(),
-      foodName,
-      dateTried: new Date().toISOString(),
-      reaction,
-      notes,
-      willTryAgain,
-    };
-
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        triedFoods: [...pickyEater.triedFoods, newFood],
-      },
-    });
-
-    // Auto-add to likes/dislikes
-    if (reaction === 'loved' || reaction === 'liked') {
-      addToLikes(foodName);
-    } else if (reaction === 'disliked' || reaction === 'refused') {
-      addToDislikes(foodName);
+  const handleAddFood = (type: 'likes' | 'dislikes', name: string, notes?: string) => {
+    if (!name.trim()) {
+      setError('Food name required');
+      return;
+    }
+    try {
+      addPickyEaterFood(type, { name: name.trim(), notes });
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to add food');
     }
   };
 
-  const addToLikes = (name?: string) => {
-    const foodName = name || prompt('Name des Lebensmittels:');
-    if (!foodName) return;
-
-    const newLike: FoodPreference = {
-      id: crypto.randomUUID(),
-      name: foodName,
-      addedDate: new Date().toISOString(),
-    };
-
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        likes: [...pickyEater.likes, newLike],
-      },
-    });
-  };
-
-  const addToDislikes = (name?: string) => {
-    const foodName = name || prompt('Name des Lebensmittels:');
-    if (!foodName) return;
-
-    const newDislike: FoodPreference = {
-      id: crypto.randomUUID(),
-      name: foodName,
-      addedDate: new Date().toISOString(),
-    };
-
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        dislikes: [...pickyEater.dislikes, newDislike],
-      },
-    });
-  };
-
-  const removeFromLikes = (id: string) => {
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        likes: pickyEater.likes.filter((item) => item.id !== id),
-      },
-    });
-  };
-
-  const removeFromDislikes = (id: string) => {
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        dislikes: pickyEater.dislikes.filter((item) => item.id !== id),
-      },
-    });
-  };
-
-  const removeTriedFood = (id: string) => {
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        triedFoods: pickyEater.triedFoods.filter((item) => item.id !== id),
-      },
-    });
-  };
-
-  const updateChildInfo = () => {
-    const name = prompt('Name des Kindes:', pickyEater.childName);
-    if (!name) return;
-    const age = parseFloat(prompt('Alter:', pickyEater.age.toString()) || pickyEater.age.toString());
-
-    setData({
-      ...data,
-      pickyEater: {
-        ...pickyEater,
-        childName: name,
-        age,
-      },
-    });
-  };
-
-  const getReactionEmoji = (reaction: TriedFood['reaction']) => {
-    const emojis = {
-      loved: '❤️',
-      liked: '👍',
-      neutral: '😐',
-      disliked: '👎',
-      refused: '🙅',
-    };
-    return emojis[reaction];
-  };
-
-  const getReactionColor = (reaction: TriedFood['reaction']) => {
-    const colors = {
-      loved: 'bg-pink-100 border-pink-300',
-      liked: 'bg-green-100 border-green-300',
-      neutral: 'bg-yellow-100 border-yellow-300',
-      disliked: 'bg-orange-100 border-orange-300',
-      refused: 'bg-red-100 border-red-300',
-    };
-    return colors[reaction];
+  const handleRemoveFood = (type: 'likes' | 'dislikes', id: string) => {
+    try {
+      removePickyEaterFood(type, id);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to remove food');
+    }
   };
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex justify-between items-center mb-6">
-          <div>
-            <h2 className="text-2xl font-bold text-gray-800 flex items-center">
-              <Heart className="mr-2 text-pink-500" />
-              Essgewohnheiten
-            </h2>
-            <p className="text-gray-600 mt-1">
-              {pickyEater.childName} ({pickyEater.age} Jahre)
-              <button
-                onClick={updateChildInfo}
-                className="ml-2 text-sm text-indigo-600 hover:underline"
-              >
-                bearbeiten
-              </button>
-            </p>
-          </div>
-          <button
-            onClick={addTriedFood}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-          >
-            <Plus size={20} className="inline mr-1" />
-            Neues Lebensmittel probiert
-          </button>
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+          <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
+          <p className="text-red-700">{error}</p>
         </div>
+      )}
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-            <div className="text-2xl font-bold text-green-700">{pickyEater.likes.length}</div>
-            <div className="text-sm text-green-600">Mag ich</div>
-          </div>
-          <div className="bg-red-50 p-4 rounded-lg border border-red-200">
-            <div className="text-2xl font-bold text-red-700">{pickyEater.dislikes.length}</div>
-            <div className="text-sm text-red-600">Mag ich nicht</div>
-          </div>
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <div className="text-2xl font-bold text-blue-700">{pickyEater.triedFoods.length}</div>
-            <div className="text-sm text-blue-600">Probiert</div>
-          </div>
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-            <div className="text-2xl font-bold text-purple-700">
-              {pickyEater.triedFoods.filter((f) => f.reaction === 'loved' || f.reaction === 'liked').length}
-            </div>
-            <div className="text-sm text-purple-600">Positive Reaktionen</div>
-          </div>
-        </div>
-
-        {/* Tabs */}
-        <div className="flex space-x-2 mb-6 border-b">
+      {/* Tabs */}
+      <div className="bg-white rounded-lg shadow-md">
+        <div className="flex border-b overflow-x-auto">
           {[
-            { id: 'tried' as const, label: 'Probiert', count: pickyEater.triedFoods.length },
-            { id: 'likes' as const, label: 'Mag ich', count: pickyEater.likes.length },
-            { id: 'dislikes' as const, label: 'Mag ich nicht', count: pickyEater.dislikes.length },
+            { id: 'stats' as TabType, label: 'Übersicht' },
+            { id: 'profile' as TabType, label: 'Profil' },
+            { id: 'likes' as TabType, label: `Mag ich (${pickyEater.likes.length})` },
+            { id: 'dislikes' as TabType, label: `Mag ich nicht (${pickyEater.dislikes.length})` },
+            { id: 'tried' as TabType, label: `Probiert (${pickyEater.triedFoods.length})` },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 font-medium transition-colors ${
+              className={`px-4 py-4 font-medium text-sm whitespace-nowrap transition-colors ${
                 activeTab === tab.id
                   ? 'border-b-2 border-indigo-600 text-indigo-600'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              {tab.label} ({tab.count})
+              {tab.label}
             </button>
           ))}
         </div>
 
-        {/* Content */}
-        {activeTab === 'tried' && (
-          <div className="space-y-3">
-            {pickyEater.triedFoods.length === 0 ? (
-              <p className="text-center text-gray-500 py-8">Noch keine Lebensmittel probiert</p>
-            ) : (
-              [...pickyEater.triedFoods]
-                .sort((a, b) => new Date(b.dateTried).getTime() - new Date(a.dateTried).getTime())
-                .map((food) => (
-                  <div
-                    key={food.id}
-                    className={`p-4 rounded-lg border-2 ${getReactionColor(food.reaction)}`}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-2xl">{getReactionEmoji(food.reaction)}</span>
-                          <h3 className="font-semibold text-lg">{food.foodName}</h3>
+        <div className="p-6">
+          {/* Stats tab */}
+          {activeTab === 'stats' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-gray-800">Fortschritt von {pickyEater.childName}</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4">
+                  <div className="text-3xl font-bold text-blue-600">{stats.totalTried}</div>
+                  <div className="text-sm text-gray-700">Probiert</div>
+                </div>
+                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-4">
+                  <div className="text-3xl font-bold text-green-600">{stats.liked}</div>
+                  <div className="text-sm text-gray-700">Mag ich</div>
+                </div>
+                <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-4">
+                  <div className="text-3xl font-bold text-orange-600">{stats.disliked}</div>
+                  <div className="text-sm text-gray-700">Mag ich nicht</div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4">
+                  <div className="text-3xl font-bold text-purple-600">{stats.successRate}%</div>
+                  <div className="text-sm text-gray-700">Erfolgsrate</div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Profile tab */}
+          {activeTab === 'profile' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-gray-800">Kinderprofil</h3>
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <input
+                    type="text"
+                    value={pickyEater.childName}
+                    onChange={(e) =>
+                      updatePickyEaterProfile({ ...pickyEater, childName: e.target.value })
+                    }
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Alter</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={pickyEater.age}
+                    onChange={(e) =>
+                      updatePickyEaterProfile({ ...pickyEater, age: parseFloat(e.target.value) })
+                    }
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Allergien</label>
+                  <textarea
+                    value={pickyEater.allergies.join(', ')}
+                    onChange={(e) =>
+                      updatePickyEaterProfile({
+                        ...pickyEater,
+                        allergies: e.target.value.split(',').map((a) => a.trim()),
+                      })
+                    }
+                    placeholder="Durch Komma getrennt"
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Likes tab */}
+          {activeTab === 'likes' && (
+            <AddFoodTab
+              title="Lieblingslebensmittel"
+              items={pickyEater.likes}
+              onAdd={(name, notes) => handleAddFood('likes', name, notes)}
+              onRemove={(id) => handleRemoveFood('likes', id)}
+            />
+          )}
+
+          {/* Dislikes tab */}
+          {activeTab === 'dislikes' && (
+            <AddFoodTab
+              title="Nicht gemocht"
+              items={pickyEater.dislikes}
+              onAdd={(name, notes) => handleAddFood('dislikes', name, notes)}
+              onRemove={(id) => handleRemoveFood('dislikes', id)}
+            />
+          )}
+
+          {/* Tried tab */}
+          {activeTab === 'tried' && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-gray-800">Probierte Lebensmittel</h3>
+              {pickyEater.triedFoods.length === 0 ? (
+                <p className="text-gray-500">Noch keine Lebensmittel probiert</p>
+              ) : (
+                <div className="space-y-2">
+                  {pickyEater.triedFoods.map((food) => (
+                    <div key={food.id} className="border rounded-lg p-3">
+                      <div className="flex justify-between items-start">
+                        <div className="flex-1">
+                          <div className="font-medium text-gray-800">{food.foodName}</div>
+                          <div className="text-sm text-gray-600">
+                            {getReactionEmoji(food.reaction)} {formatReaction(food.reaction)}
+                          </div>
+                          {food.notes && <div className="text-sm text-gray-600 mt-1">{food.notes}</div>}
+                          <div className="text-xs text-gray-400 mt-1">{formatRelativeTime(food.dateTried)}</div>
                         </div>
-                        <div className="text-sm text-gray-600 mt-1">
-                          Probiert am {format(new Date(food.dateTried), 'dd.MM.yyyy', { locale: de })}
-                        </div>
-                        {food.notes && <p className="text-sm mt-2 text-gray-700">{food.notes}</p>}
-                        {food.willTryAgain && (
-                          <div className="mt-2 text-sm text-green-600">🔄 Nochmal probieren</div>
-                        )}
+                        {food.willTryAgain && <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Nächste Probe</span>}
                       </div>
-                      <button
-                        onClick={() => removeTriedFood(food.id)}
-                        className="p-1 text-red-600 hover:bg-red-50 rounded"
-                      >
-                        <Trash2 size={16} />
-                      </button>
                     </div>
-                  </div>
-                ))
-            )}
-          </div>
-        )}
-
-        {activeTab === 'likes' && (
-          <div>
-            <button
-              onClick={() => addToLikes()}
-              className="mb-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-            >
-              <ThumbsUp size={16} className="inline mr-1" />
-              Hinzufügen
-            </button>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {pickyEater.likes.map((item) => (
-                <div key={item.id} className="bg-green-50 p-3 rounded-lg border border-green-200 flex justify-between items-center">
-                  <span className="font-medium">{item.name}</span>
-                  <button
-                    onClick={() => removeFromLikes(item.id)}
-                    className="p-1 text-red-600 hover:bg-red-50 rounded"
-                  >
-                    <Trash2 size={14} />
-                  </button>
+                  ))}
                 </div>
-              ))}
-              {pickyEater.likes.length === 0 && (
-                <p className="col-span-full text-center text-gray-500 py-8">Keine Favoriten hinzugefügt</p>
               )}
             </div>
-          </div>
-        )}
-
-        {activeTab === 'dislikes' && (
-          <div>
-            <button
-              onClick={() => addToDislikes()}
-              className="mb-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-            >
-              <ThumbsDown size={16} className="inline mr-1" />
-              Hinzufügen
-            </button>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {pickyEater.dislikes.map((item) => (
-                <div key={item.id} className="bg-red-50 p-3 rounded-lg border border-red-200 flex justify-between items-center">
-                  <span className="font-medium">{item.name}</span>
-                  <button
-                    onClick={() => removeFromDislikes(item.id)}
-                    className="p-1 text-red-600 hover:bg-red-50 rounded"
-                  >
-                    <Trash2 size={14} />
-                  </button>
-                </div>
-              ))}
-              {pickyEater.dislikes.length === 0 && (
-                <p className="col-span-full text-center text-gray-500 py-8">Keine Abneigungen hinzugefügt</p>
-              )}
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
+    </div>
+  );
+};
+
+const AddFoodTab = ({
+  title,
+  items,
+  onAdd,
+  onRemove,
+}: {
+  title: string;
+  items: any[];
+  onAdd: (name: string, notes?: string) => void;
+  onRemove: (id: string) => void;
+}) => {
+  const [foodName, setFoodName] = useState('');
+  const [notes, setNotes] = useState('');
+
+  const handleAdd = () => {
+    onAdd(foodName, notes);
+    setFoodName('');
+    setNotes('');
+  };
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-lg font-bold text-gray-800">{title}</h3>
+      
+      <div className="space-y-2">
+        <input
+          type="text"
+          value={foodName}
+          onChange={(e) => setFoodName(e.target.value)}
+          onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
+          placeholder="Lebensmittel Name"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        />
+        <textarea
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Notizen (optional)"
+          rows={2}
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        />
+        <button
+          onClick={handleAdd}
+          className="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+        >
+          <Plus size={18} />
+          <span>Hinzufügen</span>
+        </button>
+      </div>
+
+      {items.length > 0 && (
+        <div className="space-y-2">
+          {items.map((item) => (
+            <div key={item.id} className="flex items-center justify-between p-3 border rounded-lg bg-gray-50">
+              <div>
+                <div className="font-medium text-gray-800">{item.name}</div>
+                {item.notes && <div className="text-sm text-gray-600">{item.notes}</div>}
+              </div>
+              <button
+                onClick={() => onRemove(item.id)}
+                className="ml-4 p-1 text-red-600 hover:bg-red-50 rounded transition-colors"
+              >
+                <Trash2 size={18} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

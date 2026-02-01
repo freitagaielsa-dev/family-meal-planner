@@ -1,255 +1,268 @@
-import { useState } from 'react';
-import { ShoppingCart, Plus, Trash2, Check } from 'lucide-react';
-import { AppData, ShoppingListItem } from '../types';
+import { useState, useMemo, useCallback } from 'react';
+import { ShoppingCart, Trash2, AlertCircle } from 'lucide-react';
+import { useAppContext } from '../hooks/useAppContext';
+import { generateShoppingListFromWeek, getCurrentWeekStart, groupShoppingListBySupermarket, groupShoppingListByCategory } from '../utils/data';
+import { formatSupermarket } from '../utils/formatting';
 
-interface Props {
-  data: AppData;
-  setData: (data: AppData) => void;
-}
+type FilterType = 'all' | 'edeka' | 'rewe' | 'aldi' | 'lidl' | 'other' | 'category';
 
-const ShoppingList = ({ data, setData }: Props) => {
-  const [selectedSupermarket, setSelectedSupermarket] = useState<'all' | 'edeka' | 'rewe' | 'aldi' | 'lidl' | 'other'>('all');
+/**
+ * Shopping list component
+ */
+const ShoppingList = () => {
+  const { data, updateShoppingItem, deleteShoppingItem, clearShoppingList, updateData } = useAppContext();
+  const [filterType, setFilterType] = useState<FilterType>('all');
+  const [filterValue, setFilterValue] = useState<string>('all');
+  const [error, setError] = useState<string | null>(null);
 
-  const generateShoppingListFromWeek = () => {
-    // Find current week plan
-    const currentWeek = data.weekPlans[data.weekPlans.length - 1];
-    if (!currentWeek) {
-      alert('Keine Wochenplanung gefunden!');
-      return;
+  const SUPERMARKETS = ['edeka', 'rewe', 'aldi', 'lidl', 'other'] as const;
+
+  // Generate shopping list from current week
+  const handleGenerateFromWeek = useCallback(() => {
+    try {
+      const weekStart = getCurrentWeekStart();
+      const items = generateShoppingListFromWeek(weekStart, data);
+      
+      if (items.length === 0) {
+        setError('Keine Gerichte für diese Woche geplant');
+        return;
+      }
+
+      updateData({ ...data, shoppingLists: items });
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to generate shopping list');
     }
+  }, [data, updateData]);
 
-    const ingredientsMap = new Map<string, ShoppingListItem>();
+  // Toggle item checked status
+  const handleToggleItem = useCallback(
+    (id: string) => {
+      const item = data.shoppingLists.find((i) => i.id === id);
+      if (item) {
+        updateShoppingItem(id, { ...item, checked: !item.checked });
+      }
+    },
+    [data.shoppingLists, updateShoppingItem]
+  );
 
-    // Collect all ingredients from meals in the week
-    Object.values(currentWeek.meals).forEach((dayMeals) => {
-      Object.values(dayMeals).forEach((mealId) => {
-        const meal = data.meals.find((m) => m.id === mealId);
-        if (meal) {
-          meal.ingredients.forEach((ingredient) => {
-            const key = `${ingredient.name}-${ingredient.unit}`;
-            if (ingredientsMap.has(key)) {
-              const existing = ingredientsMap.get(key)!;
-              existing.amount += ingredient.amount;
-              existing.mealIds.push(meal.id);
-            } else {
-              ingredientsMap.set(key, {
-                id: crypto.randomUUID(),
-                ingredientId: ingredient.id,
-                name: ingredient.name,
-                amount: ingredient.amount,
-                unit: ingredient.unit,
-                category: ingredient.category,
-                supermarket: ingredient.supermarket || 'other',
-                checked: false,
-                mealIds: [meal.id],
-              });
-            }
-          });
-        }
-      });
-    });
+  // Delete item
+  const handleDeleteItem = useCallback(
+    (id: string) => {
+      deleteShoppingItem(id);
+    },
+    [deleteShoppingItem]
+  );
 
-    setData({
-      ...data,
-      shoppingLists: Array.from(ingredientsMap.values()),
-    });
-  };
-
-  const toggleItem = (id: string) => {
-    setData({
-      ...data,
-      shoppingLists: data.shoppingLists.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
-      ),
-    });
-  };
-
-  const deleteItem = (id: string) => {
-    setData({
-      ...data,
-      shoppingLists: data.shoppingLists.filter((item) => item.id !== id),
-    });
-  };
-
-  const addManualItem = () => {
-    const name = prompt('Artikel Name:');
-    if (!name) return;
-    const amount = parseFloat(prompt('Menge:') || '1');
-    const unit = prompt('Einheit (z.B. kg, Stück):') || 'Stück';
-    
-    const newItem: ShoppingListItem = {
-      id: crypto.randomUUID(),
-      ingredientId: crypto.randomUUID(),
-      name,
-      amount,
-      unit,
-      supermarket: 'other',
-      checked: false,
-      mealIds: [],
-    };
-
-    setData({
-      ...data,
-      shoppingLists: [...data.shoppingLists, newItem],
-    });
-  };
-
-  const clearChecked = () => {
-    if (confirm('Alle abgehakten Artikel löschen?')) {
-      setData({
-        ...data,
-        shoppingLists: data.shoppingLists.filter((item) => !item.checked),
-      });
+  // Clear checked items
+  const handleClearChecked = useCallback(() => {
+    if (window.confirm('Alle abgehakten Artikel löschen?')) {
+      try {
+        const remaining = data.shoppingLists.filter((item) => !item.checked);
+        updateData({ ...data, shoppingLists: remaining });
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to clear items');
+      }
     }
-  };
+  }, [data, updateData]);
 
-  const filteredItems = selectedSupermarket === 'all'
-    ? data.shoppingLists
-    : data.shoppingLists.filter((item) => item.supermarket === selectedSupermarket);
+  // Clear all items
+  const handleClearAll = useCallback(() => {
+    if (window.confirm('Alle Artikel löschen?')) {
+      clearShoppingList();
+    }
+  }, [clearShoppingList]);
 
-  const groupedByCategory = filteredItems.reduce((acc, item) => {
-    const category = item.category || 'Sonstiges';
-    if (!acc[category]) acc[category] = [];
-    acc[category].push(item);
-    return acc;
-  }, {} as Record<string, ShoppingListItem[]>);
+  // Filter items
+  const filteredItems = useMemo(() => {
+    if (filterType === 'all') {
+      return data.shoppingLists;
+    } else if (filterType === 'category') {
+      return data.shoppingLists.filter((item) => (item.category || 'Sonstige') === filterValue);
+    } else {
+      return data.shoppingLists.filter((item) => item.supermarket === filterValue);
+    }
+  }, [data.shoppingLists, filterType, filterValue]);
 
-  const supermarkets = [
-    { id: 'all' as const, label: 'Alle', color: 'bg-gray-100' },
-    { id: 'edeka' as const, label: 'Edeka', color: 'bg-yellow-100' },
-    { id: 'rewe' as const, label: 'Rewe', color: 'bg-red-100' },
-    { id: 'aldi' as const, label: 'Aldi', color: 'bg-blue-100' },
-    { id: 'lidl' as const, label: 'Lidl', color: 'bg-blue-100' },
-    { id: 'other' as const, label: 'Andere', color: 'bg-gray-100' },
-  ];
+  // Stats
+  const stats = useMemo(() => {
+    const total = data.shoppingLists.length;
+    const checked = data.shoppingLists.filter((i) => i.checked).length;
+    const unchecked = total - checked;
+    return { total, checked, unchecked };
+  }, [data.shoppingLists]);
+
+  // Group by supermarket or category
+  const grouped = useMemo(() => {
+    if (filterType === 'category') {
+      return groupShoppingListByCategory(filteredItems);
+    }
+    return groupShoppingListBySupermarket(filteredItems);
+  }, [filteredItems, filterType]);
 
   return (
     <div className="space-y-6">
+      {/* Error message */}
+      {error && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+          <AlertCircle className="text-red-600 flex-shrink-0 mt-0.5" size={20} />
+          <p className="text-red-700">{error}</p>
+        </div>
+      )}
+
+      {/* Header with stats */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center">
-            <ShoppingCart className="mr-2" />
-            Einkaufsliste
-          </h2>
-          <div className="flex space-x-2">
-            <button
-              onClick={generateShoppingListFromWeek}
-              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-            >
-              Aus Wochenplan generieren
-            </button>
-            <button
-              onClick={addManualItem}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
-            >
-              <Plus size={20} className="inline mr-1" />
-              Manuell hinzufügen
-            </button>
-            <button
-              onClick={clearChecked}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
-            >
-              <Trash2 size={20} className="inline mr-1" />
-              Abgehakte löschen
-            </button>
-          </div>
+        <div className="flex justify-between items-center mb-6 flex-wrap gap-4">
+          <h2 className="text-2xl font-bold text-gray-800">Einkaufsliste</h2>
+          <button
+            onClick={handleGenerateFromWeek}
+            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          >
+            <ShoppingCart size={20} />
+            <span>Aus Wochenplan generieren</span>
+          </button>
         </div>
 
-        {/* Supermarket Filter */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {supermarkets.map((market) => (
-            <button
-              key={market.id}
-              onClick={() => setSelectedSupermarket(market.id)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedSupermarket === market.id
-                  ? `${market.color} ring-2 ring-indigo-600`
-                  : 'bg-gray-100 hover:bg-gray-200'
-              }`}
-            >
-              {market.label}
-              {market.id !== 'all' && (
-                <span className="ml-2 text-sm">
-                  ({data.shoppingLists.filter((i) => i.supermarket === market.id).length})
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Shopping List */}
-        {filteredItems.length === 0 ? (
-          <div className="text-center py-12 text-gray-500">
-            <ShoppingCart size={48} className="mx-auto mb-4 opacity-50" />
-            <p>Keine Artikel in der Einkaufsliste</p>
-            <p className="text-sm mt-2">Generieren Sie eine Liste aus Ihrem Wochenplan oder fügen Sie manuell Artikel hinzu</p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            {Object.entries(groupedByCategory).map(([category, items]) => (
-              <div key={category} className="border rounded-lg p-4">
-                <h3 className="font-semibold text-lg mb-3 text-gray-700">{category}</h3>
-                <div className="space-y-2">
-                  {items.map((item) => (
-                    <div
-                      key={item.id}
-                      className={`flex items-center justify-between p-3 rounded-lg border ${
-                        item.checked ? 'bg-gray-50 opacity-60' : 'bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center space-x-3 flex-1">
-                        <button
-                          onClick={() => toggleItem(item.id)}
-                          className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
-                            item.checked
-                              ? 'bg-green-500 border-green-500'
-                              : 'border-gray-300 hover:border-green-500'
-                          }`}
-                        >
-                          {item.checked && <Check size={16} className="text-white" />}
-                        </button>
-                        <div className={item.checked ? 'line-through' : ''}>
-                          <div className="font-medium">{item.name}</div>
-                          <div className="text-sm text-gray-600">
-                            {item.amount} {item.unit}
-                            {item.mealIds.length > 0 && (
-                              <span className="ml-2 text-xs text-indigo-600">
-                                ({item.mealIds.length} Gericht{item.mealIds.length > 1 ? 'e' : ''})
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-xs px-2 py-1 rounded bg-gray-100">
-                          {item.supermarket}
-                        </span>
-                        <button
-                          onClick={() => deleteItem(item.id)}
-                          className="p-1 text-red-600 hover:bg-red-50 rounded"
-                        >
-                          <Trash2 size={16} />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Summary */}
-        {filteredItems.length > 0 && (
-          <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
-            <div className="flex justify-between text-sm">
-              <span>Gesamt: {filteredItems.length} Artikel</span>
-              <span>Abgehakt: {filteredItems.filter((i) => i.checked).length}</span>
-              <span>Offen: {filteredItems.filter((i) => !i.checked).length}</span>
+        {/* Stats */}
+        {stats.total > 0 && (
+          <div className="grid grid-cols-3 gap-4 mb-6 bg-gray-50 p-4 rounded-lg">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-indigo-600">{stats.total}</div>
+              <div className="text-sm text-gray-600">Artikel</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-green-600">{stats.checked}</div>
+              <div className="text-sm text-gray-600">Abgehakt</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-orange-600">{stats.unchecked}</div>
+              <div className="text-sm text-gray-600">Offen</div>
             </div>
           </div>
         )}
+
+        {/* Filters */}
+        {stats.total > 0 && (
+          <div className="flex gap-4 flex-wrap mb-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Gruppierung</label>
+              <select
+                value={filterType}
+                onChange={(e) => {
+                  const type = e.target.value as FilterType;
+                  setFilterType(type);
+                  setFilterValue(type === 'category' ? 'Sonstige' : 'all');
+                }}
+                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              >
+                <option value="all">Nach Supermarkt</option>
+                <option value="category">Nach Kategorie</option>
+              </select>
+            </div>
+
+            {filterType !== 'all' && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Filter</label>
+                <select
+                  value={filterValue}
+                  onChange={(e) => setFilterValue(e.target.value)}
+                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                >
+                  {filterType === 'category' ? (
+                    Object.keys(groupShoppingListByCategory(data.shoppingLists)).sort().map((cat) => (
+                      <option key={cat} value={cat}>
+                        {cat}
+                      </option>
+                    ))
+                  ) : (
+                    SUPERMARKETS.map((sm) => (
+                      <option key={sm} value={sm}>
+                        {formatSupermarket(sm)}
+                      </option>
+                    ))
+                  )}
+                </select>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Actions */}
+        {stats.total > 0 && (
+          <div className="flex gap-2 flex-wrap">
+            {stats.checked > 0 && (
+              <button
+                onClick={handleClearChecked}
+                className="px-4 py-2 text-sm bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
+              >
+                Abgehakte löschen
+              </button>
+            )}
+            {stats.total > 0 && (
+              <button
+                onClick={handleClearAll}
+                className="px-4 py-2 text-sm bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+              >
+                Alles löschen
+              </button>
+            )}
+          </div>
+        )}
       </div>
+
+      {/* Items by group */}
+      {stats.total === 0 ? (
+        <div className="bg-white rounded-lg shadow-md p-12 text-center">
+          <ShoppingCart className="mx-auto mb-4 text-gray-400" size={48} />
+          <p className="text-gray-500 text-lg">Keine Artikel auf der Einkaufsliste</p>
+          <p className="text-gray-400 text-sm mt-2">
+            Klicken Sie auf "Aus Wochenplan generieren" um automatisch eine Einkaufsliste zu erstellen
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {Object.entries(grouped).map(([group, items]) => (
+            <div key={group} className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-bold text-gray-800 mb-4">
+                {formatSupermarket(group)} ({items.length})
+              </h3>
+              <div className="space-y-2">
+                {items.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      <input
+                        type="checkbox"
+                        checked={item.checked}
+                        onChange={() => handleToggleItem(item.id)}
+                        className="w-5 h-5 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+                      />
+                      <div className="flex-1">
+                        <div className={`font-medium ${item.checked ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+                          {item.name}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          {item.amount} {item.unit}
+                          {item.category && ` • ${item.category}`}
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleDeleteItem(item.id)}
+                      className="ml-4 p-1 text-red-600 hover:bg-red-50 rounded transition-colors flex-shrink-0"
+                      title="Löschen"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

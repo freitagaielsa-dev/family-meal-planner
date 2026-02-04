@@ -1,0 +1,2263 @@
+{
+  "meals": [
+    {
+      "id": "veg-pad-thai-001",
+      "name": "Vegetarian Pad Thai with Tofu",
+      "description": "Classic Thai comfort food - tender tofu, crispy vegetables, and a tangy-sweet sauce over rice noodles. Perfect for introducing diverse flavors.",
+      "ingredients": [
+        {
+          "id": "veg-pad-thai-001-ing-0",
+          "name": "Rice noodles",
+          "amount": 8,
+          "unit": "oz",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-1",
+          "name": "Firm tofu",
+          "amount": 1,
+          "unit": "block (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-2",
+          "name": "Bell peppers (mixed colors)",
+          "amount": 2,
+          "unit": "medium",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-3",
+          "name": "Carrots",
+          "amount": 2,
+          "unit": "medium, julienned",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-4",
+          "name": "Broccoli florets",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-5",
+          "name": "Peanuts (unsalted)",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-6",
+          "name": "Limes",
+          "amount": 2,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-7",
+          "name": "Tamarind paste",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-8",
+          "name": "Soy sauce",
+          "amount": 3,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-9",
+          "name": "Sugar",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-10",
+          "name": "Vegetable oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-pad-thai-001-ing-11",
+          "name": "Garlic",
+          "amount": 3,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 25,
+      "cookTime": 15,
+      "category": "lunch",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Use mild sauce for daughter, adjustable spice for adults. Can add chili flakes at the table for extra heat."
+    },
+    {
+      "id": "veg-fried-rice-001",
+      "name": "Vegetable Fried Rice with Tofu",
+      "description": "A classic comfort meal - fluffy jasmine rice with colorful vegetables, scrambled eggs, and crispy tofu cubes. Kids love the fun colors and texture variety.",
+      "ingredients": [
+        {
+          "id": "veg-fried-rice-001-ing-0",
+          "name": "Jasmine rice (cooked day before)",
+          "amount": 3,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-1",
+          "name": "Firm tofu",
+          "amount": 0.5,
+          "unit": "block (7 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-2",
+          "name": "Eggs",
+          "amount": 3,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-3",
+          "name": "Peas (fresh or frozen)",
+          "amount": 1,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-4",
+          "name": "Corn kernels (fresh or frozen)",
+          "amount": 0.75,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-5",
+          "name": "Carrots (diced small)",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-6",
+          "name": "Green onions",
+          "amount": 2,
+          "unit": "stalks, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-7",
+          "name": "Sesame oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-8",
+          "name": "Soy sauce",
+          "amount": 3,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-9",
+          "name": "Vegetable oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-10",
+          "name": "Garlic",
+          "amount": 2,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-fried-rice-001-ing-11",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 15,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Great for using leftover rice. Easy to customize with vegetables on hand. Daughter can help mix the rice!"
+    },
+    {
+      "id": "veg-curry-noodle-soup-001",
+      "name": "Thai Red Curry Noodle Soup",
+      "description": "Warming, creamy coconut broth infused with Thai red curry spices, loaded with soft vegetables and rice noodles. A nourishing one-pot meal.",
+      "ingredients": [
+        {
+          "id": "veg-curry-noodle-soup-001-ing-0",
+          "name": "Rice noodles",
+          "amount": 6,
+          "unit": "oz",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-1",
+          "name": "Coconut milk (full-fat)",
+          "amount": 1,
+          "unit": "can (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-2",
+          "name": "Vegetable broth",
+          "amount": 3,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-3",
+          "name": "Red curry paste",
+          "amount": 1.5,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-4",
+          "name": "Zucchini",
+          "amount": 1,
+          "unit": "medium, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-5",
+          "name": "Bell peppers (red or yellow)",
+          "amount": 1.5,
+          "unit": "medium, chunked",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-6",
+          "name": "Snap peas",
+          "amount": 1,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-7",
+          "name": "Mushrooms",
+          "amount": 1,
+          "unit": "cup, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-8",
+          "name": "Lime juice",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-9",
+          "name": "Garlic",
+          "amount": 2,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-10",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "tbsp, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-11",
+          "name": "Fish sauce or soy sauce",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-noodle-soup-001-ing-12",
+          "name": "Fresh cilantro",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 20,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Use mild curry paste for family version. Adults can add more curry paste or sriracha at the table. This is ultimate comfort in a bowl."
+    },
+    {
+      "id": "veg-shakshuka-001",
+      "name": "Shakshuka (Baked Eggs in Tomato Sauce)",
+      "description": "Middle Eastern classic - fluffy baked eggs nestled in a spiced tomato and vegetable sauce. Colorful, nutritious, and fun for the whole family.",
+      "ingredients": [
+        {
+          "id": "veg-shakshuka-001-ing-0",
+          "name": "Eggs",
+          "amount": 8,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-1",
+          "name": "Canned diced tomatoes",
+          "amount": 2,
+          "unit": "cans (14.5 oz each)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-2",
+          "name": "Onion",
+          "amount": 1,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-3",
+          "name": "Bell peppers (red or orange)",
+          "amount": 2,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-4",
+          "name": "Garlic",
+          "amount": 3,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-5",
+          "name": "Cumin",
+          "amount": 1,
+          "unit": "tsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-6",
+          "name": "Paprika",
+          "amount": 1,
+          "unit": "tsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-7",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-8",
+          "name": "Olive oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-shakshuka-001-ing-9",
+          "name": "Fresh cilantro or parsley",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 15,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Different from noodles/rice for midweek variety. Daughter loves getting her own egg pocket in the sauce! Can serve with pita bread or crusty bread."
+    },
+    {
+      "id": "veg-curry-rice-001",
+      "name": "Coconut Curry Rice with Chickpeas & Vegetables",
+      "description": "Golden rice infused with coconut milk and warming spices, loaded with protein-rich chickpeas and tender vegetables. Creamy, satisfying, and deeply nourishing.",
+      "ingredients": [
+        {
+          "id": "veg-curry-rice-001-ing-0",
+          "name": "Jasmine or basmati rice",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-1",
+          "name": "Canned chickpeas",
+          "amount": 2,
+          "unit": "cans (15 oz each), drained",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-2",
+          "name": "Coconut milk (full-fat)",
+          "amount": 1,
+          "unit": "can (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-3",
+          "name": "Vegetable broth",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-4",
+          "name": "Curry powder",
+          "amount": 2,
+          "unit": "tsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-5",
+          "name": "Turmeric powder",
+          "amount": 0.5,
+          "unit": "tsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-6",
+          "name": "Onion",
+          "amount": 1,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-7",
+          "name": "Carrots",
+          "amount": 2,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-8",
+          "name": "Sweet potato",
+          "amount": 1,
+          "unit": "medium, cubed",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-9",
+          "name": "Peas (fresh or frozen)",
+          "amount": 1,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-10",
+          "name": "Garlic",
+          "amount": 3,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-11",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "tbsp, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-12",
+          "name": "Vegetable oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-13",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-rice-001-ing-14",
+          "name": "Fresh cilantro",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 25,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Creamy, warming, deeply flavorful soul food. Can make slightly thinner for soup consistency if preferred. Mild version for kids, adults add fresh chili or hot sauce at table."
+    },
+    {
+      "id": "veg-stir-fry-noodles-001",
+      "name": "Vegetable & Noodle Stir-Fry",
+      "description": "Quick and satisfying - colorful vegetables and tender noodles tossed in a light, savory sauce. Great for interactive cooking with the kids.",
+      "ingredients": [
+        {
+          "id": "veg-stir-fry-noodles-001-ing-0",
+          "name": "Egg noodles or wheat noodles",
+          "amount": 8,
+          "unit": "oz",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-1",
+          "name": "Broccoli florets",
+          "amount": 2,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-2",
+          "name": "Snap peas",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-3",
+          "name": "Carrots",
+          "amount": 1.5,
+          "unit": "medium, julienned",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-4",
+          "name": "Mushrooms",
+          "amount": 1.5,
+          "unit": "cups, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-5",
+          "name": "Bell peppers (red or yellow)",
+          "amount": 1,
+          "unit": "medium, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-6",
+          "name": "Firm tofu (optional)",
+          "amount": 0.5,
+          "unit": "block, cubed",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-7",
+          "name": "Garlic",
+          "amount": 3,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-8",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "tbsp, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-9",
+          "name": "Soy sauce",
+          "amount": 3,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-10",
+          "name": "Oyster sauce",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-11",
+          "name": "Sesame oil",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-12",
+          "name": "Vegetable oil",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-13",
+          "name": "Water or vegetable broth",
+          "amount": 0.25,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-stir-fry-noodles-001-ing-14",
+          "name": "Green onions",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 15,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Fast weeknight meal. All vegetables can be prepped ahead. Interactive - daughter can help toss and mix ingredients. Very adaptable - use any vegetables on hand."
+    },
+    {
+      "id": "veg-curry-ramen-001",
+      "name": "Vegetarian Coconut Curry Ramen",
+      "description": "A soul-warming ramen with creamy coconut curry broth, tender vegetables, and chewy ramen noodles. Perfect for ending the week on a cozy note.",
+      "ingredients": [
+        {
+          "id": "veg-curry-ramen-001-ing-0",
+          "name": "Ramen noodles",
+          "amount": 1,
+          "unit": "package (3 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-1",
+          "name": "Vegetable broth",
+          "amount": 4,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-2",
+          "name": "Coconut milk (full-fat)",
+          "amount": 1,
+          "unit": "can (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-3",
+          "name": "Curry powder",
+          "amount": 2,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-4",
+          "name": "Mushrooms (shiitake or cremini)",
+          "amount": 2,
+          "unit": "cups, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-5",
+          "name": "Bok choy",
+          "amount": 2,
+          "unit": "bunches, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-6",
+          "name": "Bell peppers (red or yellow)",
+          "amount": 1,
+          "unit": "medium, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-7",
+          "name": "Carrots",
+          "amount": 1,
+          "unit": "medium, julienned",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-8",
+          "name": "Firm tofu (optional)",
+          "amount": 0.5,
+          "unit": "block, cubed",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-9",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "tbsp, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-10",
+          "name": "Garlic",
+          "amount": 3,
+          "unit": "cloves, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-11",
+          "name": "Lime juice",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-12",
+          "name": "Soy sauce",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-13",
+          "name": "Fish sauce (optional for vegetarians)",
+          "amount": 0.5,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-14",
+          "name": "Vegetable oil",
+          "amount": 1,
+          "unit": "tbsp",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-15",
+          "name": "Green onions",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "veg-curry-ramen-001-ing-16",
+          "name": "Fresh cilantro",
+          "amount": "for garnish",
+          "unit": "",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 20,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Rich, creamy, deeply satisfying soul food. Build complexity with toppings. Make two broths - mild for kids, spicy for adults by adding chili at the table."
+    },
+    {
+      "id": "italian-cacio-pepe-001",
+      "name": "Pasta Cacio e Pepe (Roman Cheese & Pepper Pasta)",
+      "description": "Authentic Roman classic - spaghetti with creamy Pecorino Romano cheese sauce infused with toasted black pepper. No cream needed; the magic is in the emulsion. Sophisticated yet simple.",
+      "ingredients": [
+        {
+          "id": "italian-cacio-pepe-001-ing-0",
+          "name": "Spaghetti (high-quality Italian)",
+          "amount": 1,
+          "unit": "lb (400g)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-cacio-pepe-001-ing-1",
+          "name": "Pecorino Romano cheese (wedge, finely grated)",
+          "amount": 4,
+          "unit": "oz (120g)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-cacio-pepe-001-ing-2",
+          "name": "Black peppercorns (whole, to be toasted & cracked)",
+          "amount": 3,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-cacio-pepe-001-ing-3",
+          "name": "Butter",
+          "amount": 4,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-cacio-pepe-001-ing-4",
+          "name": "Salt for pasta water",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-cacio-pepe-001-ing-5",
+          "name": "Reserved pasta water (starchy)",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 5,
+      "cookTime": 15,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Key is emulsification - temperature control prevents cheese clumping. Buy Pecorino Romano as wedge and grate fresh. Toast peppercorns first for depth."
+    },
+    {
+      "id": "italian-pasta-al-forno-001",
+      "name": "Pasta al Forno (Italian Baked Pasta)",
+      "description": "Southern Italian Sunday tradition - layers of penne, homemade tomato-vegetable sauce, creamy béchamel, and melted cheese, baked until golden. Rich, comforting, impressive.",
+      "ingredients": [
+        {
+          "id": "italian-pasta-al-forno-001-ing-0",
+          "name": "Penne or rigatoni pasta",
+          "amount": 1,
+          "unit": "lb (400g)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-1",
+          "name": "Extra virgin olive oil",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-2",
+          "name": "Yellow onion",
+          "amount": 1,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-3",
+          "name": "Garlic cloves",
+          "amount": 4,
+          "unit": "whole, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-4",
+          "name": "Bell peppers (mixed colors)",
+          "amount": 2,
+          "unit": "large, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-5",
+          "name": "Mushrooms (cremini or button)",
+          "amount": 8,
+          "unit": "oz, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-6",
+          "name": "San Marzano crushed tomatoes",
+          "amount": 2,
+          "unit": "cans (28 oz each)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-7",
+          "name": "Tomato paste",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-8",
+          "name": "Dried oregano",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-9",
+          "name": "Sugar",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-10",
+          "name": "Fresh basil leaves",
+          "amount": 8,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-11",
+          "name": "Butter",
+          "amount": 4,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-12",
+          "name": "All-purpose flour",
+          "amount": 0.25,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-13",
+          "name": "Whole milk (warmed)",
+          "amount": 2,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-14",
+          "name": "Salt and white pepper",
+          "amount": "to taste",
+          "unit": "portion",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-15",
+          "name": "Nutmeg (pinch)",
+          "amount": 1,
+          "unit": "pinch",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-16",
+          "name": "Pecorino Romano cheese (grated)",
+          "amount": 2,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-pasta-al-forno-001-ing-17",
+          "name": "Mozzarella cheese (shredded, optional)",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 5,
+      "prepTime": 15,
+      "cookTime": 35,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Can be made ahead - assemble in morning, cover, refrigerate, bake before serving. San Marzano tomatoes are sweeter; worth the investment."
+    },
+    {
+      "id": "mediterranean-orzo-001",
+      "name": "Mediterranean Orzo Pasta - Light & Fresh",
+      "description": "Greek-inspired orzo (rice-shaped pasta) cooked like risotto with warm broth, then finished with fresh vegetables, herbs, and feta cheese. Light yet satisfying, celebrates fresh Mediterranean flavors.",
+      "ingredients": [
+        {
+          "id": "mediterranean-orzo-001-ing-0",
+          "name": "Orzo pasta (rice-shaped)",
+          "amount": 1.5,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-1",
+          "name": "Vegetable broth (warm)",
+          "amount": 4,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-2",
+          "name": "Extra virgin olive oil",
+          "amount": 5,
+          "unit": "tablespoons (divided)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-3",
+          "name": "Yellow onion",
+          "amount": 1,
+          "unit": "medium, finely diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-4",
+          "name": "Garlic cloves",
+          "amount": 4,
+          "unit": "whole, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-5",
+          "name": "Cherry tomatoes",
+          "amount": 2,
+          "unit": "cups, halved",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-6",
+          "name": "Cucumber",
+          "amount": 2,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-7",
+          "name": "Red bell pepper",
+          "amount": 1,
+          "unit": "large, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-8",
+          "name": "Kalamata olives",
+          "amount": 0.5,
+          "unit": "cup, halved",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-9",
+          "name": "Fresh feta cheese",
+          "amount": 0.5,
+          "unit": "cup, crumbled",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-10",
+          "name": "Fresh mint",
+          "amount": 0.25,
+          "unit": "cup, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-11",
+          "name": "Fresh basil",
+          "amount": 0.25,
+          "unit": "cup, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-12",
+          "name": "Fresh parsley",
+          "amount": 0.25,
+          "unit": "cup, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-13",
+          "name": "Lemon (zest and juice)",
+          "amount": 2,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-14",
+          "name": "Dried oregano",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-orzo-001-ing-15",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "portion",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 20,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Toasting the orzo is essential for depth. Can serve warm, room temperature, or cold. Celebrates fresh vegetables - use best quality available."
+    },
+    {
+      "id": "italian-aglio-olio-001",
+      "name": "Pasta Aglio e Olio (Garlic & Olive Oil Pasta)",
+      "description": "Mediterranean elegance in simplicity - spaghetti tossed with golden garlic-infused olive oil, fresh parsley, and reserved pasta water. One of Italy's most revered simple dishes.",
+      "ingredients": [
+        {
+          "id": "italian-aglio-olio-001-ing-0",
+          "name": "Spaghetti (high-quality Italian)",
+          "amount": 1,
+          "unit": "lb (400g)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-1",
+          "name": "Fresh garlic cloves (sliced thin)",
+          "amount": 10,
+          "unit": "cloves (about 1/3 cup)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-2",
+          "name": "Extra virgin olive oil (best quality)",
+          "amount": 0.5,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-3",
+          "name": "Fresh Italian flat-leaf parsley",
+          "amount": 4,
+          "unit": "tablespoons, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-4",
+          "name": "Pecorino Romano cheese (optional)",
+          "amount": 2,
+          "unit": "tablespoons, grated",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-5",
+          "name": "Red pepper flakes (for adults)",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-6",
+          "name": "Lemon zest (optional garnish)",
+          "amount": 1,
+          "unit": "whole lemon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-7",
+          "name": "Salt for pasta water",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "italian-aglio-olio-001-ing-8",
+          "name": "Reserved pasta water",
+          "amount": 1,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 5,
+      "cookTime": 15,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Golden garlic is the secret - must be soft and golden, not burnt. Olive oil quality is essential - it IS the sauce. Fresh parsley is essential (not basil)."
+    },
+    {
+      "id": "mediterranean-shakshuka-001",
+      "name": "Shakshuka (Baked Eggs in Tomato Sauce)",
+      "description": "Middle Eastern classic - fluffy baked eggs nestled in spiced tomato and vegetable sauce. Colorful, nutritious, fun for whole family. Breaks up the week with non-pasta option.",
+      "ingredients": [
+        {
+          "id": "mediterranean-shakshuka-001-ing-0",
+          "name": "Eggs",
+          "amount": 8,
+          "unit": "whole",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-1",
+          "name": "Canned diced tomatoes",
+          "amount": 2,
+          "unit": "cans (14.5 oz each)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-2",
+          "name": "Yellow onion",
+          "amount": 1,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-3",
+          "name": "Garlic cloves",
+          "amount": 3,
+          "unit": "whole, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-4",
+          "name": "Bell peppers (mixed colors)",
+          "amount": 2,
+          "unit": "large, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-5",
+          "name": "Cumin",
+          "amount": 1,
+          "unit": "teaspoon",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-6",
+          "name": "Paprika",
+          "amount": 1.5,
+          "unit": "teaspoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-7",
+          "name": "Olive oil",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-8",
+          "name": "Fresh cilantro",
+          "amount": 0.25,
+          "unit": "cup, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "mediterranean-shakshuka-001-ing-9",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "portion",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 10,
+      "cookTime": 25,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Serve with crusty bread or pita for dipping. Can be made as brunch or light dinner. Interactive meal - daughter enjoys her own egg pocket."
+    },
+    {
+      "id": "curry-ramen-001",
+      "name": "Vegetarian Coconut Curry Ramen",
+      "description": "Soul-warming ramen with creamy coconut curry broth, tender vegetables, and chewy ramen noodles. Perfect for ending the week on a cozy note. Asian flavors provide contrast to Mediterranean dishes.",
+      "ingredients": [
+        {
+          "id": "curry-ramen-001-ing-0",
+          "name": "Ramen noodles",
+          "amount": 1,
+          "unit": "package",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-1",
+          "name": "Vegetable broth",
+          "amount": 4,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-2",
+          "name": "Coconut milk",
+          "amount": 1,
+          "unit": "can (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-3",
+          "name": "Curry powder",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-4",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "piece (2 inches), minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-5",
+          "name": "Garlic cloves",
+          "amount": 4,
+          "unit": "whole, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-6",
+          "name": "Mushrooms (cremini or shiitake)",
+          "amount": 8,
+          "unit": "oz, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-7",
+          "name": "Bok choy",
+          "amount": 2,
+          "unit": "bunches, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-8",
+          "name": "Bell peppers (mixed colors)",
+          "amount": 2,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-9",
+          "name": "Carrots",
+          "amount": 2,
+          "unit": "medium, sliced thin",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-10",
+          "name": "Snap peas or snow peas",
+          "amount": 8,
+          "unit": "oz",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-11",
+          "name": "Firm tofu (cubed)",
+          "amount": 8,
+          "unit": "oz",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-12",
+          "name": "Green onions/scallions",
+          "amount": 2,
+          "unit": "stalks, sliced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-13",
+          "name": "Soy sauce",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-ramen-001-ing-14",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "portion",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 25,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Can make two broths - mild for kids, spicy for adults. Build complexity with toppings. Creamy, deeply satisfying broth."
+    },
+    {
+      "id": "curry-chickpea-rice-001",
+      "name": "Coconut Curry Rice with Chickpeas & Vegetables",
+      "description": "Golden rice infused with coconut milk and warming spices, loaded with protein-rich chickpeas and tender vegetables. Creamy, satisfying, deeply nourishing.",
+      "ingredients": [
+        {
+          "id": "curry-chickpea-rice-001-ing-0",
+          "name": "Jasmine or basmati rice",
+          "amount": 2,
+          "unit": "cups (uncooked)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-1",
+          "name": "Coconut milk",
+          "amount": 1,
+          "unit": "can (14 oz)",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-2",
+          "name": "Vegetable broth",
+          "amount": 3,
+          "unit": "cups",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-3",
+          "name": "Canned chickpeas",
+          "amount": 2,
+          "unit": "cans (15 oz each), drained",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-4",
+          "name": "Curry powder",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-5",
+          "name": "Yellow onion",
+          "amount": 1,
+          "unit": "large, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-6",
+          "name": "Garlic cloves",
+          "amount": 4,
+          "unit": "whole, minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-7",
+          "name": "Fresh ginger",
+          "amount": 1,
+          "unit": "piece (1 inch), minced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-8",
+          "name": "Carrots",
+          "amount": 2,
+          "unit": "medium, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-9",
+          "name": "Peas (fresh or frozen)",
+          "amount": 1,
+          "unit": "cup",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-10",
+          "name": "Sweet potato",
+          "amount": 1,
+          "unit": "large, diced",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-11",
+          "name": "Olive oil",
+          "amount": 2,
+          "unit": "tablespoons",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-12",
+          "name": "Fresh cilantro",
+          "amount": 0.25,
+          "unit": "cup, chopped",
+          "category": "produce",
+          "supermarket": "other"
+        },
+        {
+          "id": "curry-chickpea-rice-001-ing-13",
+          "name": "Salt and pepper",
+          "amount": "to taste",
+          "unit": "portion",
+          "category": "produce",
+          "supermarket": "other"
+        }
+      ],
+      "servings": 4,
+      "prepTime": 15,
+      "cookTime": 30,
+      "category": "dinner",
+      "rating": null,
+      "isHelloFresh": false,
+      "timesCooked": 0,
+      "notes": "Blooming the curry powder in oil brings out depth. Can be made slightly thinner for soup consistency if preferred. Warm, deeply nourishing."
+    }
+  ],
+  "weekPlans": [
+    {
+      "id": "week-2026-02-01",
+      "weekStart": "2026-02-01",
+      "meals": {
+        "monday": {
+          "dinner": "italian-cacio-pepe-001"
+        },
+        "tuesday": {
+          "dinner": "italian-pasta-al-forno-001"
+        },
+        "wednesday": {
+          "dinner": "mediterranean-orzo-001"
+        },
+        "thursday": {
+          "dinner": "veg-shakshuka-001"
+        },
+        "friday": {
+          "dinner": "veg-curry-rice-001"
+        },
+        "saturday": {
+          "dinner": "italian-aglio-olio-001"
+        },
+        "sunday": {
+          "dinner": "veg-curry-ramen-001"
+        }
+      }
+    }
+  ],
+  "pickyEater": {
+    "childName": "Meine Tochter",
+    "age": 3.5,
+    "likes": [],
+    "dislikes": [],
+    "allergies": [],
+    "triedFoods": []
+  },
+  "helloFreshRecipes": [],
+  "shoppingLists": [
+    {
+      "id": "shopping-0",
+      "ingredientId": "italian-cacio-pepe-001-ing-0",
+      "name": "Spaghetti (high-quality Italian)",
+      "amount": 2,
+      "unit": "lb (400g)",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001",
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-1",
+      "ingredientId": "italian-cacio-pepe-001-ing-1",
+      "name": "Pecorino Romano cheese (wedge, finely grated)",
+      "amount": 4,
+      "unit": "oz (120g)",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001"
+      ]
+    },
+    {
+      "id": "shopping-2",
+      "ingredientId": "italian-cacio-pepe-001-ing-2",
+      "name": "Black peppercorns (whole, to be toasted & cracked)",
+      "amount": 3,
+      "unit": "tablespoons",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001"
+      ]
+    },
+    {
+      "id": "shopping-3",
+      "ingredientId": "italian-cacio-pepe-001-ing-3",
+      "name": "Butter",
+      "amount": 8,
+      "unit": "tablespoons",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001",
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-4",
+      "ingredientId": "italian-cacio-pepe-001-ing-4",
+      "name": "Salt for pasta water",
+      "amount": 4,
+      "unit": "tablespoons",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001",
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-5",
+      "ingredientId": "italian-cacio-pepe-001-ing-5",
+      "name": "Reserved pasta water (starchy)",
+      "amount": 1.5,
+      "unit": "cups",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-cacio-pepe-001"
+      ]
+    },
+    {
+      "id": "shopping-6",
+      "ingredientId": "italian-pasta-al-forno-001-ing-0",
+      "name": "Penne or rigatoni pasta",
+      "amount": 1,
+      "unit": "lb (400g)",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-7",
+      "ingredientId": "italian-pasta-al-forno-001-ing-1",
+      "name": "Extra virgin olive oil",
+      "amount": 7,
+      "unit": "tablespoons",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001",
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-8",
+      "ingredientId": "italian-pasta-al-forno-001-ing-2",
+      "name": "Yellow onion",
+      "amount": 2,
+      "unit": "medium, diced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001",
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-9",
+      "ingredientId": "italian-pasta-al-forno-001-ing-3",
+      "name": "Garlic cloves",
+      "amount": 8,
+      "unit": "whole, minced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001",
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-10",
+      "ingredientId": "italian-pasta-al-forno-001-ing-4",
+      "name": "Bell peppers (mixed colors)",
+      "amount": 2,
+      "unit": "large, diced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-11",
+      "ingredientId": "italian-pasta-al-forno-001-ing-5",
+      "name": "Mushrooms (cremini or button)",
+      "amount": 8,
+      "unit": "oz, diced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-12",
+      "ingredientId": "italian-pasta-al-forno-001-ing-6",
+      "name": "San Marzano crushed tomatoes",
+      "amount": 2,
+      "unit": "cans (28 oz each)",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-13",
+      "ingredientId": "italian-pasta-al-forno-001-ing-7",
+      "name": "Tomato paste",
+      "amount": 2,
+      "unit": "tablespoons",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-14",
+      "ingredientId": "italian-pasta-al-forno-001-ing-8",
+      "name": "Dried oregano",
+      "amount": 2,
+      "unit": "teaspoon",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001",
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-15",
+      "ingredientId": "italian-pasta-al-forno-001-ing-9",
+      "name": "Sugar",
+      "amount": 1,
+      "unit": "teaspoon",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-16",
+      "ingredientId": "italian-pasta-al-forno-001-ing-10",
+      "name": "Fresh basil leaves",
+      "amount": 8,
+      "unit": "whole",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-17",
+      "ingredientId": "italian-pasta-al-forno-001-ing-12",
+      "name": "All-purpose flour",
+      "amount": 0.25,
+      "unit": "cup",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-18",
+      "ingredientId": "italian-pasta-al-forno-001-ing-13",
+      "name": "Whole milk (warmed)",
+      "amount": 2,
+      "unit": "cups",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-19",
+      "ingredientId": "italian-pasta-al-forno-001-ing-14",
+      "name": "Salt and white pepper",
+      "amount": "to taste",
+      "unit": "portion",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-20",
+      "ingredientId": "italian-pasta-al-forno-001-ing-15",
+      "name": "Nutmeg (pinch)",
+      "amount": 1,
+      "unit": "pinch",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-21",
+      "ingredientId": "italian-pasta-al-forno-001-ing-16",
+      "name": "Pecorino Romano cheese (grated)",
+      "amount": 2,
+      "unit": "cups",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-22",
+      "ingredientId": "italian-pasta-al-forno-001-ing-17",
+      "name": "Mozzarella cheese (shredded, optional)",
+      "amount": 0.5,
+      "unit": "cup",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-pasta-al-forno-001"
+      ]
+    },
+    {
+      "id": "shopping-23",
+      "ingredientId": "mediterranean-orzo-001-ing-0",
+      "name": "Orzo pasta (rice-shaped)",
+      "amount": 1.5,
+      "unit": "cups",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-24",
+      "ingredientId": "mediterranean-orzo-001-ing-1",
+      "name": "Vegetable broth (warm)",
+      "amount": 4,
+      "unit": "cups",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-25",
+      "ingredientId": "mediterranean-orzo-001-ing-5",
+      "name": "Cherry tomatoes",
+      "amount": 2,
+      "unit": "cups, halved",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-26",
+      "ingredientId": "mediterranean-orzo-001-ing-6",
+      "name": "Cucumber",
+      "amount": 2,
+      "unit": "medium, diced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-27",
+      "ingredientId": "mediterranean-orzo-001-ing-7",
+      "name": "Red bell pepper",
+      "amount": 1,
+      "unit": "large, diced",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-28",
+      "ingredientId": "mediterranean-orzo-001-ing-8",
+      "name": "Kalamata olives",
+      "amount": 0.5,
+      "unit": "cup, halved",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-29",
+      "ingredientId": "mediterranean-orzo-001-ing-9",
+      "name": "Fresh feta cheese",
+      "amount": 0.5,
+      "unit": "cup, crumbled",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-30",
+      "ingredientId": "mediterranean-orzo-001-ing-10",
+      "name": "Fresh mint",
+      "amount": 0.25,
+      "unit": "cup, chopped",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-31",
+      "ingredientId": "mediterranean-orzo-001-ing-11",
+      "name": "Fresh basil",
+      "amount": 0.25,
+      "unit": "cup, chopped",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-32",
+      "ingredientId": "mediterranean-orzo-001-ing-12",
+      "name": "Fresh parsley",
+      "amount": 0.25,
+      "unit": "cup, chopped",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-33",
+      "ingredientId": "mediterranean-orzo-001-ing-13",
+      "name": "Lemon (zest and juice)",
+      "amount": 2,
+      "unit": "whole",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-34",
+      "ingredientId": "mediterranean-orzo-001-ing-15",
+      "name": "Salt and pepper",
+      "amount": "to taste",
+      "unit": "portion",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "mediterranean-orzo-001"
+      ]
+    },
+    {
+      "id": "shopping-35",
+      "ingredientId": "italian-aglio-olio-001-ing-1",
+      "name": "Fresh garlic cloves (sliced thin)",
+      "amount": 10,
+      "unit": "cloves (about 1/3 cup)",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-36",
+      "ingredientId": "italian-aglio-olio-001-ing-2",
+      "name": "Extra virgin olive oil (best quality)",
+      "amount": 0.5,
+      "unit": "cup",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-37",
+      "ingredientId": "italian-aglio-olio-001-ing-3",
+      "name": "Fresh Italian flat-leaf parsley",
+      "amount": 4,
+      "unit": "tablespoons, chopped",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-38",
+      "ingredientId": "italian-aglio-olio-001-ing-4",
+      "name": "Pecorino Romano cheese (optional)",
+      "amount": 2,
+      "unit": "tablespoons, grated",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-39",
+      "ingredientId": "italian-aglio-olio-001-ing-5",
+      "name": "Red pepper flakes (for adults)",
+      "amount": 1,
+      "unit": "teaspoon",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-40",
+      "ingredientId": "italian-aglio-olio-001-ing-6",
+      "name": "Lemon zest (optional garnish)",
+      "amount": 1,
+      "unit": "whole lemon",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    },
+    {
+      "id": "shopping-41",
+      "ingredientId": "italian-aglio-olio-001-ing-8",
+      "name": "Reserved pasta water",
+      "amount": 1,
+      "unit": "cup",
+      "category": "produce",
+      "supermarket": "other",
+      "checked": false,
+      "mealIds": [
+        "italian-aglio-olio-001"
+      ]
+    }
+  ]
+}

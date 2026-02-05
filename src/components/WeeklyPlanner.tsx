@@ -1,11 +1,12 @@
 import { useState, useMemo, useCallback } from 'react';
-import { Plus, AlertCircle } from 'lucide-react';
+import { Plus, AlertCircle, BookOpen } from 'lucide-react';
 import { Meal, WeekPlan } from '../types';
 import { format, startOfWeek, addDays, parseISO } from 'date-fns';
 import { useAppContext } from '../hooks/useAppContext';
 import { getOrCreateWeekPlan, getCurrentWeekStart } from '../utils/data';
 import { formatDateDE, getDayNameDE, formatMealType } from '../utils/formatting';
 import { getMealValidationError } from '../utils/validation';
+import { allRecipes, Recipe } from '../data/recipes';
 import MealForm from './features/MealForm';
 import MealLibraryCard from './features/MealLibraryCard';
 
@@ -18,6 +19,9 @@ const WeeklyPlanner = () => {
   const [showMealForm, setShowMealForm] = useState(false);
   const [editingMeal, setEditingMeal] = useState<Meal | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showRecipeSelector, setShowRecipeSelector] = useState(false);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [selectedMealType, setSelectedMealType] = useState<'breakfast' | 'lunch' | 'dinner' | null>(null);
 
   const weekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   const dayLabels = weekDays.map(getDayNameDE);
@@ -103,6 +107,52 @@ const WeeklyPlanner = () => {
     [deleteMeal]
   );
 
+  // Add recipe from recipe book
+  const handleAddRecipeToMeals = useCallback(
+    (recipe: Recipe) => {
+      const meal = {
+        name: recipe.name,
+        description: recipe.description,
+        ingredients: recipe.ingredients.map((ing) => ({
+          id: crypto.randomUUID(),
+          name: ing.name,
+          amount: ing.amount,
+          unit: ing.unit,
+          category: ing.category,
+          supermarket: ing.supermarket,
+        })),
+        servings: recipe.servings,
+        prepTime: recipe.prepTime,
+        cookTime: recipe.cookTime,
+        category: 'dinner' as const,
+        rating: recipe.rating,
+        notes: recipe.notes,
+      };
+
+      const newMealId = addMeal(meal);
+      
+      // If a day/meal type was selected, add it to the plan
+      if (selectedDay && selectedMealType) {
+        const updatedPlan: WeekPlan = {
+          ...currentPlan,
+          meals: {
+            ...currentPlan.meals,
+            [selectedDay]: {
+              ...(currentPlan.meals[selectedDay] || {}),
+              [selectedMealType]: newMealId,
+            },
+          },
+        };
+        updateWeekPlan(currentPlan.id, updatedPlan);
+      }
+
+      setShowRecipeSelector(false);
+      setSelectedDay(null);
+      setSelectedMealType(null);
+    },
+    [addMeal, selectedDay, selectedMealType, currentPlan, updateWeekPlan]
+  );
+
   const getMealById = (id: string) => data.meals.find((m) => m.id === id);
 
   const weekStart = parseISO(selectedWeek);
@@ -179,8 +229,14 @@ const WeeklyPlanner = () => {
                         ) : (
                           <select
                             onChange={(e) => {
-                              if (e.target.value) {
-                                handleAddMealToPlan(day, mealType, e.target.value);
+                              const value = e.target.value;
+                              if (value === 'from-recipe-book') {
+                                setSelectedDay(day);
+                                setSelectedMealType(mealType);
+                                setShowRecipeSelector(true);
+                                e.target.value = '';
+                              } else if (value) {
+                                handleAddMealToPlan(day, mealType, value);
                                 e.target.value = '';
                               }
                             }}
@@ -193,6 +249,9 @@ const WeeklyPlanner = () => {
                                 {m.name}
                               </option>
                             ))}
+                            <option value="from-recipe-book" className="font-medium text-indigo-600">
+                              📖 Aus dem Rezeptbuch...
+                            </option>
                           </select>
                         )}
                       </div>
@@ -241,6 +300,60 @@ const WeeklyPlanner = () => {
             setError(null);
           }}
         />
+      )}
+
+      {/* Recipe Book Selector Modal */}
+      {showRecipeSelector && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+            <div className="p-4 border-b flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <BookOpen className="text-indigo-600" size={24} />
+                <h3 className="text-xl font-bold">Rezeptbuch</h3>
+              </div>
+              <button
+                onClick={() => {
+                  setShowRecipeSelector(false);
+                  setSelectedDay(null);
+                  setSelectedMealType(null);
+                }}
+                className="p-2 hover:bg-gray-100 rounded-full"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-4 overflow-y-auto flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {allRecipes.map((recipe) => (
+                  <div
+                    key={recipe.id}
+                    className="border rounded-lg p-4 hover:bg-indigo-50 hover:border-indigo-300 cursor-pointer transition-colors"
+                    onClick={() => handleAddRecipeToMeals(recipe)}
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                        recipe.category === 'pasta' ? 'bg-red-100 text-red-800' :
+                        recipe.category === 'rice' ? 'bg-yellow-100 text-yellow-800' :
+                        'bg-orange-100 text-orange-800'
+                      }`}>
+                        {recipe.category === 'pasta' ? 'Pasta' : recipe.category === 'rice' ? 'Reis' : 'Soul Food'}
+                      </span>
+                      {recipe.pickyEaterFriendly && (
+                        <span className="text-pink-500">♥</span>
+                      )}
+                    </div>
+                    <h4 className="font-semibold text-gray-800 mb-1">{recipe.name}</h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">{recipe.description}</p>
+                    <div className="flex gap-2 mt-2 text-xs text-gray-500">
+                      <span>⏱️ {recipe.prepTime + recipe.cookTime} Min.</span>
+                      <span>💶 ~{recipe.costEstimate}€</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

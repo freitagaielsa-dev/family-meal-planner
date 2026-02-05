@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { Calendar, ShoppingCart, Heart, ChefHat, BarChart3 } from 'lucide-react';
+import { Calendar, ShoppingCart, Heart, ChefHat, BarChart3, BookOpen } from 'lucide-react';
 import { AppProvider } from './context/AppContext';
 import WeeklyPlanner from './components/WeeklyPlanner';
 import ShoppingList from './components/ShoppingList';
 import PickyEaterTracker from './components/PickyEaterTracker';
 import HelloFreshIntegration from './components/HelloFreshIntegration';
 import StatsDashboard from './components/StatsDashboard';
+import RecipeBrowser from './components/RecipeBrowser';
 import Header from './components/layout/Header';
 import Navigation from './components/layout/Navigation';
 
-type Tab = 'planner' | 'shopping' | 'picky-eater' | 'hellofresh' | 'stats';
+type Tab = 'planner' | 'shopping' | 'picky-eater' | 'hellofresh' | 'stats' | 'recipes';
 
 const AppContent = () => {
   const [activeTab, setActiveTab] = useState<Tab>('planner');
@@ -19,6 +20,7 @@ const AppContent = () => {
     { id: 'shopping', label: 'Einkaufsliste', icon: <ShoppingCart size={20} /> },
     { id: 'picky-eater', label: 'Essgewohnheiten', icon: <Heart size={20} /> },
     { id: 'hellofresh', label: 'HelloFresh', icon: <ChefHat size={20} /> },
+    { id: 'recipes', label: 'Rezepte', icon: <BookOpen size={20} /> },
     { id: 'stats', label: 'Statistiken', icon: <BarChart3 size={20} /> },
   ];
 
@@ -32,6 +34,7 @@ const AppContent = () => {
         {activeTab === 'shopping' && <ShoppingList />}
         {activeTab === 'picky-eater' && <PickyEaterTracker />}
         {activeTab === 'hellofresh' && <HelloFreshIntegration />}
+        {activeTab === 'recipes' && <RecipeBrowser />}
         {activeTab === 'stats' && <StatsDashboard />}
       </main>
     </div>
